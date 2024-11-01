@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "89fdfa34-7203-419e-9b38-30ac5e6ad1d1",
+		"name": "RCS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28375934"
+	},
+	"item": [
+		{
+			"name": "Send Message RCS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "****"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"message\": {\r\n    \"to\": \"91**********\",\r\n    \"text\": \"Hello! This is a new conversation started using Google RCS.\",\r\n    \"messageType\": \"SMS\"  // Use \"SMS\" if sending SMS instead\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://rcs.googleapis.com/v1/messages:send"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Message Bussiness Comm.",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "***"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"message\": {\r\n    \"to\": \"91**********\",\r\n    \"text\": \"Hello! This is a new conversation started using Google RCS.\",\r\n    \"messageType\": \"SMS\"  // Use \"SMS\" if sending SMS instead\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://businessmessages.googleapis.com/v1/conversations/1hjgj/messages?forceFallback=true",
+					"protocol": "https",
+					"host": [
+						"businessmessages",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v1",
+						"conversations",
+						"1hjgj",
+						"messages"
+					],
+					"query": [
+						{
+							"key": "forceFallback",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create token",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"scope": "https://www.googleapis.com/auth/cloud-platform",
+						"useBrowser": false,
+						"client_authentication": "header",
+						"accessTokenUrl": "https://oauth2.googleapis.com/token",
+						"authUrl": "https://accounts.google.com/o/oauth2/auth",
+						"redirect_uri": "https://webhook.site/911b5856-d391-449b-a0dd-c4d690acea93",
+						"grant_type": "authorization_code",
+						"tokenName": "token",
+						"clientSecret": "***",
+						"clientId": "****",
+						"headerPrefix": "Bearer",
+						"addTokenTo": "header"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"message\": {\r\n    \"to\": \"\",\r\n    \"text\": \"Hello from Google RCS API!\",\r\n    \"messageType\": \"SMS\"  // or \"RCS\" if sending RCS messages\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://rcs.googleapis.com/v1/messages:send"
+			},
+			"response": []
+		}
+	]
+}
